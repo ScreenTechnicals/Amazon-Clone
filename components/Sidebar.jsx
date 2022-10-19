@@ -6,7 +6,7 @@ import { ImLocation } from "react-icons/im";
 import Link from "next/link";
 
 const Sidebar = () => {
-    let categories = ['Electronics', 'Home and Garden', 'Fashion', 'Health and Beauty', 'Automotive', 'Sports and Tourism', 'Film and Music', 'Games', 'Gift Cards']
+    let categories = ['Electronics', 'Home and Garden', 'Fashion', 'Beauty Products', 'Automotive', 'Books', 'Games']
   return (
     <div className="w-[550px] h-[88vh] transition-all xl:flex items-center justify-center hidden z-[999]">
       <div className="w-[95%] bg-white h-[80vh] shadow-md rounded-xl ml-10 space-y-1 relative">
