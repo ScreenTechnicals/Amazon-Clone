@@ -112,7 +112,7 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full xl:w-[80%] h-[88vh] md:p-10 p-3 overflow-y-auto">
+    <div className="w-full h-[88vh] md:p-10 p-3 overflow-y-auto">
       <div className="w-full xl:h-[40vh] h-[25vh] magic-gradient rounded-xl shadow-xl flex items-center xl:justify-between justify-center xl:flex-row flex-col">
         <div className="text-white md:p-10 p-5 md:space-y-4 space-y-3 md:text-left text-center">
           <h1 className="2xl:text-6xl md:text-5xl text-xl tracking-widest uppercase">
@@ -136,7 +136,7 @@ export default function Home() {
             alt="gif"
             width={500}
             height={500}
-            className="xl:w-[500px] w-[200px]"
+            className="xl:w-[500px] w-[200px] pointer-events-none"
           />
         </div>
       </div>

@@ -6,7 +6,7 @@ import CartCard from '../components/CartCard'
 
 const Cart = () => {
   return (
-    <div className='w-full h-[88vh] overflow-y-auto p-5 md:p-[32.5px]'>
+    <div className='w-full  h-[88vh] overflow-y-auto p-5 md:p-[32.5px]'>
         <div className='w-full h-[80vh] bg-white shadow-md rounded-xl md:px-10 px-3'>
             <div className='flex justify-between items-center'>
                 <div className='flex items-center space-x-2'>

@@ -58,7 +58,7 @@ const Header = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute top-10 -left-[220px] border shadow-md rounded-md p-5 w-[250px] xl:hidden bg-white hidden group-focus:block space-y-4">
+              <div className="absolute top-10 -left-[220px] border shadow-md rounded-md p-5 w-[250px] bg-white hidden xl:group-focus:hidden group-focus:block space-y-4">
                 <Link href={"/address"}>
                   <div className="w-full flex space-x-2 items-center uppercase tracking-widest hover:bg-[#ff99003e] transition-colors rounded-xl p-2">
                     <span className="text-2xl"><ImLocation /></span>
@@ -71,7 +71,7 @@ const Header = () => {
                     <span>Your Orders</span>
                   </div>
                 </Link>
-                <Link href={"/orders"}>
+                <Link href={"/help"}>
                   <div className="w-full flex space-x-2 items-center uppercase tracking-widest hover:bg-[#ff99003e] transition-colors rounded-xl p-2">
                     <span className="text-2xl"><MdHelpCenter /></span>
                     <span>Help</span>

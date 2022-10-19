@@ -8,7 +8,7 @@ import Link from "next/link";
 const Sidebar = () => {
     let categories = ['Electronics', 'Home and Garden', 'Fashion', 'Health and Beauty', 'Automotive', 'Sports and Tourism', 'Film and Music', 'Games', 'Gift Cards']
   return (
-    <div className="w-[500px] h-[88vh] transition-all xl:flex items-center justify-center hidden z-[999]">
+    <div className="w-[550px] h-[88vh] transition-all xl:flex items-center justify-center hidden z-[999]">
       <div className="w-[95%] bg-white h-[80vh] shadow-md rounded-xl ml-10 space-y-1 relative">
         <div className="mt-5 flex items-center">
           <span className="w-1 h-10 rounded-r-xl block bg-[#ff9900]"></span>
@@ -37,10 +37,12 @@ const Sidebar = () => {
             </Link>
         </div>
         <div className="mx-9">
-            <button className="w-full flex space-x-2 items-center uppercase tracking-widest hover:bg-[#ff99003e] transition-colors px-3 py-2 rounded-xl">
+            <Link href={"/help"}>
+              <button className="w-full flex space-x-2 items-center uppercase tracking-widest hover:bg-[#ff99003e] transition-colors px-3 py-2 rounded-xl">
                 <span className="text-2xl"><MdHelpCenter /></span>
                 <span>Help</span>
-            </button>
+              </button>
+            </Link>
         </div>
         <div className="w-full px-10 absolute bottom-5">
             <button className="w-full bg-[#000] flex space-x-2 items-center justify-center uppercase tracking-widest text-white transition-colors px-3 py-2 rounded-xl">
