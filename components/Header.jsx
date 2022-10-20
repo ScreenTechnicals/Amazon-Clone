@@ -22,7 +22,7 @@ const Header = ({ user, signIn, logout}) => {
   const searchSubmit = (e) => {
     if (search.length > 0) {
       e.preventDefault();
-      router.push(`/category/${search}`)
+      router.push(`/category/${search.toLocaleLowerCase()}`)
       setSearch("");
     }
   }
