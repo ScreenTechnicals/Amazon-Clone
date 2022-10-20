@@ -14,6 +14,22 @@ import "slick-carousel/slick/slick-theme.css";
 import { v4 } from "uuid";
 
 
+export async function getServerSideProps(context) {
+  const products = await fetch('https://www.screentechnicals.com/api/ecommerce/products', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'GET'
+  });
+  const data = await products.json();
+  
+  return {
+    props: {
+      data,
+    },
+  }
+}
+
 function NextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -29,43 +45,43 @@ return (
 );
 }
 
-export default function Home() {
+export default function Home({ data }) {
   let componets = [
     {
       icon: <BsLaptopFill key={v4()} />,
-      path: ""
+      category: "laptop"
     },
     {
       icon: <GiSofa key={v4()} />,
-      path: ""
+      category: "sofa"
     },
     {
       icon: <AiOutlineMobile key={v4()} />,
-      path: ""
+      category: "phone"
     },
     {
       icon: <FaTshirt key={v4()} />,
-      path: ""
+      category: "tshirt"
     },
     {
       icon: <FaBicycle key={v4()} />,
-      path: ""
+      category: "cycle"
     },
     {
       icon: <FaHeadphonesAlt key={v4()} />,
-      path: ""
+      category: ""
     },
     {
       icon: <BsSmartwatch key={v4()} />,
-      path: ""
+      category: "watch"
     },
     {
       icon: <GiWrappedSweet key={v4()} />,
-      path: ""
+      category: "sweet"
     },
     {
       icon: <IoGameController key={v4()} />,
-      path: ""
+      category: "game"
     },
   ];
 
@@ -80,7 +96,6 @@ export default function Home() {
     slidesToScroll: 5,
     initialSlide: 0,
     pauseOnHover: true,
-    // rows: 2,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
@@ -88,7 +103,7 @@ export default function Home() {
         breakpoint: 1700,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           infinite: true,
           dots: true
         }
@@ -96,9 +111,9 @@ export default function Home() {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
         }
       },
       {
@@ -148,7 +163,7 @@ export default function Home() {
         {componets.map((component) => {
             return (
               <span key={v4()} >
-                <Link href={"/"}>
+                <Link href={`/category/${component.category.toLocaleLowerCase()}`}>
                   <div className="m-2 border p-5 rounded-xl bg-white shadow-md cursor-pointer hover:scale-90 transition-transform">
                     <span className="md:text-4xl 2xl:text-7xl text-2xl">
                       {component.icon}
@@ -166,14 +181,9 @@ export default function Home() {
         </h1>
         <div className="relative px-3">
         <Slider {...settings}>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {
+            data?.slice(0, 10)?.map((product)=> <Card key={product.id} product={product} />)
+          }
         </Slider>
         </div>
       </div>
