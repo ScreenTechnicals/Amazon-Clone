@@ -9,6 +9,7 @@ const Orders = ({ user }) => {
   const ordersRef = collection(db, 'orders');
   const q = query(ordersRef, orderBy('createdAt', 'desc'));
   const [orderSnapshots, loading] = useCollection(q);
+  console.log(orderSnapshots?.docs?.filter(order => order.data().uid === user?.uid));
   return (
     <div className='w-full h-[88vh] overflow-y-auto p-10 space-y-5'>
         {

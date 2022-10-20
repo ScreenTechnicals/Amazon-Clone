@@ -20,8 +20,11 @@ const Header = ({ user, signIn, logout}) => {
   const router =  useRouter();
   const [search, setSearch] = useState("");
   const searchSubmit = (e) => {
-    e.preventDefault();
-    router.push(`/category/${search}`)
+    if (search.length > 0) {
+      e.preventDefault();
+      router.push(`/category/${search}`)
+      setSearch("");
+    }
   }
   const cartRef = collection(db, `cart`);
   const q = query(cartRef, where('uid', '==', user?.uid || ""));
