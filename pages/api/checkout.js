@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     quantity: 1,
     price_data: {
       currency: "INR",
-      unit_amount: item.price,
+      unit_amount: item.price * 100,
       product_data: {
         name: item.name.slice(0, 50),
         description: item.description.slice(0, 200),
