@@ -5,7 +5,7 @@ interactive, and can be manipulated at runtime. The top 500 apps on the App
 store now use Lottie to engage users and enhance conversions. React Slick helps to create Responsive 'Carousels' for your React/Next project.
 
 ## Demo
-https://amazon-clone-frontend-screen-technicals.vercel.app/
+https://amazon-clone-1-0.vercel.app/
 
 
 
