@@ -1,5 +1,5 @@
 # Amazon Clone Frontend 🚀
-This is an amazing, fully responsive frontend built with Tailwind CSS, Lottie Files and React Slick. Tailwind CSS is a utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
+This is an amazing, fully functional responsive built with Tailwind CSS, Lottie Files and React Slick. Tailwind CSS is a utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
 Lottie is an open-source animation file format that’s tiny, high quality, scriptable,
 interactive, and can be manipulated at runtime. The top 500 apps on the App
 store now use Lottie to engage users and enhance conversions. React Slick helps to create Responsive 'Carousels' for your React/Next project.
