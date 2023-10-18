@@ -1,16 +1,15 @@
 import React from "react";
 import Image from "next/future/image";
 import { AiFillStar } from "react-icons/ai";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore"; 
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
-
 export async function getServerSideProps(context) {
   const id = context.query.id;
   const product = await fetch(
-    `https://www.screentechnicals.com/api/ecommerce/products/${id}`,
+    `https://screentechnicals-com.vercel.app/api/ecommerce/products/${id}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -80,12 +79,12 @@ const Id = ({ data, user }) => {
         price: data[0]?.price,
         description: data[0]?.description,
         image: data[0]?.image,
-        createdAt: serverTimestamp()
+        createdAt: serverTimestamp(),
       });
-    }else {
-      alert("Please Sign In!")
+    } else {
+      alert("Please Sign In!");
     }
-  }
+  };
   const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
   );
@@ -93,16 +92,16 @@ const Id = ({ data, user }) => {
   const createCheckout = async () => {
     if (user) {
       const stripe = await stripePromise;
-    const checkout = await axios.post(`/api/checkout`, {
-      uid: user?.uid,
-      cart: data,
-    });
-    const result = await stripe.redirectToCheckout({
-      sessionId: checkout.data.id,
-    });
-    if (result.error) return alert(result.error);
+      const checkout = await axios.post(`/api/checkout`, {
+        uid: user?.uid,
+        cart: data,
+      });
+      const result = await stripe.redirectToCheckout({
+        sessionId: checkout.data.id,
+      });
+      if (result.error) return alert(result.error);
     } else {
-      alert("Please Sign In!")
+      alert("Please Sign In!");
     }
   };
 
@@ -139,10 +138,16 @@ const Id = ({ data, user }) => {
             </span>
           </div>
           <div className="md:space-x-5 mt-5">
-            <button className="px-4 py-2 bg-gradient-to-b from-[#ffd900] to-[#ffb300] hover:bg-gradient-to-t transition-all rounded-md text-white md:w-auto w-full md:mb-0 mb-5" onClick={createCheckout}>
+            <button
+              className="px-4 py-2 bg-gradient-to-b from-[#ffd900] to-[#ffb300] hover:bg-gradient-to-t transition-all rounded-md text-white md:w-auto w-full md:mb-0 mb-5"
+              onClick={createCheckout}
+            >
               Buy Now
             </button>
-            <button className="px-4 py-2 bg-gradient-to-b from-[#ffd900] to-[#ffb300] hover:bg-gradient-to-t transition-all rounded-md text-white md:w-auto w-full " onClick={addToCart}>
+            <button
+              className="px-4 py-2 bg-gradient-to-b from-[#ffd900] to-[#ffb300] hover:bg-gradient-to-t transition-all rounded-md text-white md:w-auto w-full "
+              onClick={addToCart}
+            >
               <span>Add to cart</span>
             </button>
           </div>

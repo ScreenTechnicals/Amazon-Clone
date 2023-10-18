@@ -4,84 +4,103 @@ import DeliveryGif from "../public/gifs/delivery.gif";
 import { BsLaptopFill, BsSmartwatch } from "react-icons/bs";
 import { GiSofa, GiWrappedSweet } from "react-icons/gi";
 import { AiOutlineMobile } from "react-icons/ai";
-import { FaTshirt, FaBicycle, FaHeadphonesAlt, FaAngleRight, FaAngleLeft } from "react-icons/fa";
+import {
+  FaTshirt,
+  FaBicycle,
+  FaHeadphonesAlt,
+  FaAngleRight,
+  FaAngleLeft,
+} from "react-icons/fa";
 import { IoGameController } from "react-icons/io5";
 import Link from "next/link";
 import Card from "../components/Card";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { v4 } from "uuid";
 
-
 export async function getServerSideProps(context) {
-  const products = await fetch('https://www.screentechnicals.com/api/ecommerce/products', {
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    method: 'GET'
-  });
+  const products = await fetch(
+    "https://screentechnicals-com.vercel.app/api/ecommerce/products",
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "GET",
+    }
+  );
   const data = await products.json();
-  
+
   return {
     props: {
       data,
     },
-  }
+  };
 }
 
 function NextArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <span  onClick={onClick} className="slick-arrow absolute p-0 top-[37%] -right-10 cursor-pointer md:text-xl" style={{ ...style, display: "block", color:"black"}}><FaAngleRight /></span>
+    <span
+      onClick={onClick}
+      className="slick-arrow absolute p-0 top-[37%] -right-10 cursor-pointer md:text-xl"
+      style={{ ...style, display: "block", color: "black" }}
+    >
+      <FaAngleRight />
+    </span>
   );
 }
 
 function PrevArrow(props) {
-const { className, style, onClick } = props;
-return (
-  <span  onClick={onClick} className="slick-arrow absolute p-0 top-[37%] -left-12 cursor-pointer md:text-xl" style={{ ...style, display: "block", color:"black"}}><FaAngleLeft /></span>
-  
-);
+  const { className, style, onClick } = props;
+  return (
+    <span
+      onClick={onClick}
+      className="slick-arrow absolute p-0 top-[37%] -left-12 cursor-pointer md:text-xl"
+      style={{ ...style, display: "block", color: "black" }}
+    >
+      <FaAngleLeft />
+    </span>
+  );
 }
 
 export default function Home({ data }) {
   let componets = [
     {
       icon: <BsLaptopFill key={v4()} />,
-      category: "laptop"
+      category: "laptop",
     },
     {
       icon: <GiSofa key={v4()} />,
-      category: "sofa"
+      category: "sofa",
     },
     {
       icon: <AiOutlineMobile key={v4()} />,
-      category: "phone"
+      category: "phone",
     },
     {
       icon: <FaTshirt key={v4()} />,
-      category: "tshirt"
+      category: "tshirt",
     },
     {
       icon: <FaBicycle key={v4()} />,
-      category: "cycle"
+      category: "cycle",
     },
     {
       icon: <FaHeadphonesAlt key={v4()} />,
-      category: ""
+      category: "",
     },
     {
       icon: <BsSmartwatch key={v4()} />,
-      category: "watch"
+      category: "watch",
     },
     {
       icon: <GiWrappedSweet key={v4()} />,
-      category: "sweet"
+      category: "sweet",
     },
     {
       icon: <IoGameController key={v4()} />,
-      category: "game"
+      category: "game",
     },
   ];
 
@@ -105,24 +124,24 @@ export default function Home({ data }) {
           slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 1
-        }
+          initialSlide: 1,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
+          slidesToScroll: 1,
+        },
+      },
     ],
   };
 
@@ -160,10 +179,12 @@ export default function Home({ data }) {
           Popular Categories ✨
         </h1>
         <div className="flex items-center justify-center flex-wrap">
-        {componets.map((component) => {
+          {componets.map((component) => {
             return (
-              <span key={v4()} >
-                <Link href={`/category/${component.category.toLocaleLowerCase()}`}>
+              <span key={v4()}>
+                <Link
+                  href={`/category/${component.category.toLocaleLowerCase()}`}
+                >
                   <div className="m-2 border p-5 rounded-xl bg-white shadow-md cursor-pointer hover:scale-90 transition-transform">
                     <span className="md:text-4xl 2xl:text-7xl text-2xl">
                       {component.icon}
@@ -180,11 +201,11 @@ export default function Home({ data }) {
           Hot Deals 🔥
         </h1>
         <div className="relative px-3">
-        <Slider {...settings}>
-          {
-            data?.slice(0, 10)?.map((product)=> <Card key={product.id} product={product} />)
-          }
-        </Slider>
+          <Slider {...settings}>
+            {data?.slice(0, 10)?.map((product) => (
+              <Card key={product.id} product={product} />
+            ))}
+          </Slider>
         </div>
       </div>
     </div>
